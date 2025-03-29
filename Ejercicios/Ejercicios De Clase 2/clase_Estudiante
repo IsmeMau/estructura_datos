@@ -1,0 +1,35 @@
+class Estudiante:
+    def __init__(self):
+        self.nombre = input("Ingrese el nombre del estudiante: ")
+        self.edad = int(input("Ingrese la edad del estudiante: "))
+        self.curso = input("Ingrese el curso del estudiante: ")
+        self.calificaciones = []
+
+    def agregar_calificacion(self, calificacion):
+        self.calificaciones.append(calificacion)
+
+    def calcular_promedio(self):
+        if len(self.calificaciones) == 0:
+            return 0
+        return sum(self.calificaciones) / len(self.calificaciones)
+
+    def determinar_aprobacion(self):
+        promedio = self.calcular_promedio()
+        if promedio >= 3.8:
+            return "Aprobado"
+        else:
+            return "Reprobado"
+
+    def mostrar_detalles(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Edad: {self.edad}")
+        print(f"Curso: {self.curso}")
+        print(f"Calificaciones: {self.calificaciones}")
+        print(f"Promedio: {self.calcular_promedio()}")
+        print(f"Estado: {self.determinar_aprobacion()}")
+
+
+estudiante = Estudiante()
+estudiante.agregar_calificacion(float(input("Ingrese una calificación: ")))
+estudiante.agregar_calificacion(float(input("Ingrese otra calificación: ")))
+estudiante.mostrar_detalles()

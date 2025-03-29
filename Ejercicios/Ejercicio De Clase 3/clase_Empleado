@@ -1,0 +1,52 @@
+class Empleado:
+    def __init__(self, nombre, salario, departamento):
+        self.nombre = nombre
+        self.salario = salario
+        self.departamento = departamento
+
+    def trabajar(self):
+        pass
+
+class Gerente(Empleado):
+    def __init__(self, nombre, salario, departamento, equipo):
+        super().__init__(nombre, salario, departamento)
+        self.equipo = equipo
+
+    def trabajar(self):
+        self.supervisarAEquipo()
+
+    def supervisarAEquipo(self):
+        print(f"{self.nombre} está supervisando a su equipo.")
+
+class Desarrollador(Empleado):
+    def __init__(self, nombre, salario, departamento, lenguajeDeProgramacion):
+        super().__init__(nombre, salario, departamento)
+        self.lenguajeDeProgramacion = lenguajeDeProgramacion
+
+    def trabajar(self):
+        self.escribirCodigo()
+
+    def escribirCodigo(self):
+        print(f"{self.nombre} está escribiendo código en {self.lenguajeDeProgramacion}.")
+
+def obtener_datos_empleado():
+    tipo = input("Introduce el tipo de empleado (gerente/desarrollador): ").lower()
+    nombre = input("Introduce el nombre del empleado: ")
+    salario = float(input("Introduce el salario del empleado: "))
+    departamento = input("Introduce el departamento del empleado: ")
+
+    if tipo == "gerente":
+        equipo = input("Introduce el equipo del gerente: ")
+        return Gerente(nombre, salario, departamento, equipo)
+    elif tipo == "desarrollador":
+        lenguajeDeProgramacion = input("Introduce el lenguaje de programación del desarrollador: ")
+        return Desarrollador(nombre, salario, departamento, lenguajeDeProgramacion)
+    else:
+        raise ValueError("Tipo de empleado no válido.")
+
+if __name__ == "__main__":
+    try:
+        empleado = obtener_datos_empleado()
+        empleado.trabajar()
+    except ValueError as e:
+        print(e)

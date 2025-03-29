@@ -1,0 +1,52 @@
+class Electrodomestico:
+    def __init__(self, marca, modelo, consumoEnergetico):
+        self.marca = marca
+        self.modelo = modelo
+        self.consumoEnergetico = consumoEnergetico
+
+    def encender(self):
+        pass
+
+class Lavadora(Electrodomestico):
+    def __init__(self, marca, modelo, consumoEnergetico, capacidad):
+        super().__init__(marca, modelo, consumoEnergetico)
+        self.capacidad = capacidad
+
+    def encender(self):
+        self.iniciarCicloDeLavado()
+
+    def iniciarCicloDeLavado(self):
+        print(f"La lavadora {self.marca} modelo {self.modelo} está iniciando el ciclo de lavado.")
+
+class Refrigerador(Electrodomestico):
+    def __init__(self, marca, modelo, consumoEnergetico, tieneCongelador):
+        super().__init__(marca, modelo, consumoEnergetico)
+        self.tieneCongelador = tieneCongelador
+
+    def encender(self):
+        self.regularTemperatura()
+
+    def regularTemperatura(self):
+        print(f"El refrigerador {self.marca} modelo {self.modelo} está regulando la temperatura.")
+
+def obtener_datos_electrodomestico():
+    tipo = input("Introduce el tipo de electrodoméstico (lavadora/refrigerador): ").lower()
+    marca = input("Introduce la marca del electrodoméstico: ")
+    modelo = input("Introduce el modelo del electrodoméstico: ")
+    consumoEnergetico = input("Introduce el consumo energético del electrodoméstico: ")
+
+    if tipo == "lavadora":
+        capacidad = int(input("Introduce la capacidad de la lavadora (kg): "))
+        return Lavadora(marca, modelo, consumoEnergetico, capacidad)
+    elif tipo == "refrigerador":
+        tieneCongelador = input("¿Tiene congelador? (si/no): ").lower() == "si"
+        return Refrigerador(marca, modelo, consumoEnergetico, tieneCongelador)
+    else:
+        raise ValueError("Tipo de electrodoméstico no válido.")
+
+if __name__ == "__main__":
+    try:
+        electrodomestico = obtener_datos_electrodomestico()
+        electrodomestico.encender()
+    except ValueError as e:
+        print(e)

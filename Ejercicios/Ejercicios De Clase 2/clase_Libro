@@ -1,0 +1,38 @@
+class Libro:
+    def __init__(self):
+        self.titulo = input("Ingrese el título del libro: ")
+        self.autor = input("Ingrese el autor del libro: ")
+        self.genero = input("Ingrese el género del libro: ")
+        self.añoDePublicacion = int(input("Ingrese el año de publicación del libro: "))
+
+    def obtener_titulo(self):
+        return self.titulo
+
+    def establecer_titulo(self, titulo):
+        self.titulo = titulo
+
+    def obtener_autor(self):
+        return self.autor
+
+    def establecer_autor(self, autor):
+        self.autor = autor
+
+    def obtener_genero(self):
+        return self.genero
+
+    def establecer_genero(self, genero):
+        self.genero = genero
+
+    def obtener_añoDePublicacion(self):
+        return self.añoDePublicacion
+
+    def establecer_añoDePublicacion(self, añoDePublicacion):
+        self.añoDePublicacion = añoDePublicacion
+
+    def mostrarDetalles(self):
+        print(f"Título: {self.titulo}, Autor: {self.autor}, Género: {self.genero}, Año de Publicación: {self.añoDePublicacion}")
+        
+
+# Crear una instancia de Libro y llamar al método mostrarDetalles
+libro = Libro()
+libro.mostrarDetalles()
